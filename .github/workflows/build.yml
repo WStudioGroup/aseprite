@@ -6,8 +6,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
-        build_type: [RelWithDebInfo, Debug]
+        os: [windows-latest]
+        build_type: [RelWithDebInfo]
         ui: [gui, cli]
         scripting: [lua, noscripts]
         exclude:
@@ -21,6 +21,12 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: 'recursive'
+    - uses: actions/upload-artifact@v3
+      with:
+        name: aseprite
+        path: |
+          D:/a/aseprite/aseprite/build/bin/data
+          D:/a/aseprite/aseprite/build/bin/aseprite.exe
     - name: Install Dependencies
       if: runner.os == 'Linux'
       shell: bash
