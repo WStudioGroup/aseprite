@@ -21,12 +21,6 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: 'recursive'
-    - uses: actions/upload-artifact@v3
-      with:
-        name: aseprite
-        path: |
-          D:/a/aseprite/aseprite/build/bin/data
-          D:/a/aseprite/aseprite/build/bin/aseprite.exe
     - name: Install Dependencies
       if: runner.os == 'Linux'
       shell: bash
@@ -96,3 +90,9 @@ jobs:
       shell: bash
       run: |
         cd build && ninja
+    - uses: actions/upload-artifact@v3
+      with:
+        name: aseprite
+        path: |
+          D:/a/aseprite/aseprite/build/bin/data
+          D:/a/aseprite/aseprite/build/bin/aseprite.exe
